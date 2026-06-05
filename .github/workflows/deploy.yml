@@ -27,12 +27,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install flask gunicorn pytest
+           pip install flask gunicorn pytest requests
 
       - name: Run tests
         run: |
-          cd app
-          python -m pytest app.py -v
+          python -m pytest app/app.py -v
 
   # ─── JOB 2: Build & Push Docker image ─────────────────────
   build:
