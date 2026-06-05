@@ -21,7 +21,7 @@ def track_request(endpoint, method, start_time):
 def home():
     start = time.time()
     response = jsonify({
-        "message": "CI/CD Pipeline - Auto Deployed v2!",
+        "message": "CI/CD Pipeline-Auto Deployed v2!",
         "author": "Avinash Bagul",
         "project": "AWS DevOps CI/CD Platform",
         "timestamp": str(datetime.datetime.now())
