@@ -1,24 +1,10 @@
 import pytest
-import sys
-import os
-
-# Load app.py directly by file path — avoids folder/file name clash
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__))))
-
-import importlib.util
-spec = importlib.util.spec_from_file_location(
-    "flask_app",
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), "app.py")
-)
-flask_app_module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(flask_app_module)
-
-flask_app = flask_app_module.app
+from main import app
 
 @pytest.fixture
 def client():
-    flask_app.config['TESTING'] = True
-    with flask_app.test_client() as client:
+    app.config['TESTING'] = True
+    with app.test_client() as client:
         yield client
 
 def test_home_returns_200(client):
