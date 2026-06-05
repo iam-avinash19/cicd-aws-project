@@ -14,7 +14,7 @@ def test_home_returns_200(client):
 def test_home_returns_json(client):
     response = client.get('/')
     data = response.get_json()
-    assert data['message'] == 'CI/CD Pipeline is working!'
+    assert data['message'] == 'CI/CD Pipeline-Auto Deployed v2!'
     assert data['author'] == 'Avinash Bagul'
 
 def test_health_returns_200(client):
