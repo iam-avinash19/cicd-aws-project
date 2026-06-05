@@ -25,3 +25,7 @@ def test_health_status(client):
     response = client.get('/health')
     data = response.get_json()
     assert data['status'] == 'healthy'
+
+def test_metrics_endpoint(client):
+    response = client.get('/metrics')
+    assert response.status_code == 200
