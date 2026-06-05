@@ -30,9 +30,9 @@ jobs:
            pip install flask gunicorn pytest requests
 
       - name: Run tests
-        run: |
-          cd app
-          python -m pytest test_app.py -v
+        run: python -m pytest app/test_app.py -v
+        env:
+          PYTHONPATH: ${{ github.workspace }}/app
 
   # ─── JOB 2: Build & Push Docker image ─────────────────────
   build:

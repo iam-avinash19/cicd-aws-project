@@ -2,9 +2,14 @@ import pytest
 import sys
 import os
 
-sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
-from app import app as flask_app
+import importlib.util
+spec = importlib.util.spec_from_file_location("flask_app", os.path.join(os.path.dirname(__file__), "app.py"))
+flask_app_module = importlib.util.load_from_spec(spec)
+spec.loader.exec_module(flask_app_module)
+
+flask_app = flask_app_module.app
 
 @pytest.fixture
 def client():
