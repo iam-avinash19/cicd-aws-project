@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return jsonify({
-        "message": "CI/CD Pipeline is working!",
+        "message": "CI/CD Pipeline - Auto Deployed v2!",
         "author": "Avinash Bagul",
         "project": "AWS DevOps CI/CD Platform",
         "timestamp": str(datetime.datetime.now())
